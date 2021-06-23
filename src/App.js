@@ -15,8 +15,7 @@ class App extends Component {
     })   
   }
 
-  render() {
-    console.log(this.state.tasks)
+  render() {    
     return (
       <div className="wrapper">
         <div className="list">
@@ -26,7 +25,7 @@ class App extends Component {
             <li>Hacer la cama</li>
             <li>Leer un rato</li>
             {this.state.tasks.map((name, index) =>
-            <li key={index}>{ name }</li>
+            <li key={ index }>{ name }</li>
           )} 
           </ul>
            <form onSubmit={ this.sendData }>
