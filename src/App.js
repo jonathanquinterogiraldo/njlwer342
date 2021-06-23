@@ -5,15 +5,24 @@ import React, { Component } from 'react';
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = { tasks: [] }
+    this.state = { tasks: [], newTask: '' }
   }  
 
   sendData = (event) => {
     event.preventDefault()      
     this.setState({       
-      tasks: [...this.state.tasks, event.target.formTask.value]      
+      tasks: [...this.state.tasks, this.state.newTask],
+      newTask: '' 
     })   
   }
+
+  changeTask = (event) => {
+    this.setState({
+      newTask: event.target.value
+    })
+  }
+
+
 
   render() {    
     return (
@@ -29,7 +38,7 @@ class App extends Component {
           )} 
           </ul>
            <form onSubmit={ this.sendData }>
-             <input type="text" id="new-task" name="formTask" placeholder="Ingresa una tarea y oprime Enter" />
+             <input type="text" value = { this.state.newTask } onChange= { this.changeTask } id="new-task" placeholder="Ingresa una tarea y oprime Enter" />
            </form>
         </div>
       </div>
